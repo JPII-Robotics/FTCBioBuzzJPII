@@ -15,5 +15,11 @@ public class TestPracticeProblem {
         String thirdHaystack = "marypoppins";
         String thirdNeedle = "pop";
         boolean case3 = strStr(thirdHaystack, thirdNeedle) == 4;
+
+        if (case1 && case2 && case3) {
+            System.out.println("Your function seems to work!");
+        } else {
+            System.out.println("Check your code or ask for help, you have messed up.");
+        }
     }
 }

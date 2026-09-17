@@ -17,6 +17,8 @@ Output: -1
 Explanation: "water" did not occur in "firemen", so we return -1.
 
 haystack and needle consist of only lowercase English characters.
+
+Run the file `TestPracticeProblem.java` to view if your method works properly.
  */
 public class PracticeProblem {
     public static int strStr(String haystack, String needle) {
