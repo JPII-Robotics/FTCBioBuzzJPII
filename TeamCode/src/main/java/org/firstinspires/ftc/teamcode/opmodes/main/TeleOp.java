@@ -10,8 +10,7 @@ import com.qualcomm.robotcore.util.Range;
  * This is an iterative Op Mode
  */
 
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "Basic: Iterative OpMode", group = "Iterative OpMode")
-@Disabled
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "TeleOp", group = "Main")
 public class TeleOp extends OpMode {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();

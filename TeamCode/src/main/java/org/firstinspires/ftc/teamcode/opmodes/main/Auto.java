@@ -13,7 +13,6 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name = "Auto", group = "Main")
-@Disabled
 public class Auto extends LinearOpMode {
 
     // Declare OpMode members.
