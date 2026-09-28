@@ -24,7 +24,7 @@ public class PracticeProblem {
     public static int strStr(String haystack, String needle) {
         //Implement Here
         for (int i = 0; i < haystack.length(); i++) {
-            return 0;
+            System.out.println("HI");
         }
 
         return -1;
