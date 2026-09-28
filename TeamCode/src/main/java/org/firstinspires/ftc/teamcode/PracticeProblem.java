@@ -11,7 +11,7 @@ Output: 0
 Explanation: "sad" occurs at index 0 and 6.
 The first occurrence is at index 0, so we return 0.
 
-Example 2:
+Example 2
 Input: haystack = "firemen", needle = "water"
 Output: -1
 Explanation: "water" did not occur in "firemen", so we return -1.
@@ -23,6 +23,9 @@ Run the file `TestPracticeProblem.java` to view if your method works properly.
 public class PracticeProblem {
     public static int strStr(String haystack, String needle) {
         //Implement Here
+        for (int i = 0; i < haystack.length(); i++) {
+            return 0;
+        }
 
         return -1;
     }
