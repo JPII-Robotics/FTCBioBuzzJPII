@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.opmodes.tests;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -10,8 +9,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * This is an example of a Linear Op Mode where we just run a test to run code on the robot
  */
 
-@TeleOp(name = "Hello World", group = "Tests")
-public class HelloWorld extends LinearOpMode {
+@TeleOp(name = "TestGamepadInput", group = "Tests")
+public class TestGamepadInput extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
