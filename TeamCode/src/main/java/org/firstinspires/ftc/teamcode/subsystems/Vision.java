@@ -63,6 +63,10 @@ public class Vision {
         return aprilTagProcessor.getDetections();
     }
 
+    public String getCameraState() {
+        return visionPortal.getCameraState().name();
+    }
+
     /**
      * Closes the camera
      */

@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * This is an example of a Linear Op Mode where we just run a test to run code on the robot
  */
 
-@TeleOp(name = "Test GamepadInput", group = "Tests")
+@TeleOp(name = "TestGamepadInput", group = "Tests")
 public class TestGamepadInput extends LinearOpMode {
 
     // Declare OpMode members.
