@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.subsystems;
 
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
@@ -28,12 +29,15 @@ public class Vision {
         aprilTagProcessor = new AprilTagProcessor.Builder().build();
         // The thing that takes images needs the name of the camera and the code to run (processor) on every image taken
         // Builds the visionPortal and automatically starts the camera stream.
-        visionPortal = new VisionPortal.Builder().setCamera(webcamName).addProcessor(aprilTagProcessor).build();
+        visionPortal = new VisionPortal.Builder()
+                .setCamera(webcamName)
+                .addProcessor(aprilTagProcessor)
+                .setCameraResolution(Constants.CAMERA_RESOLUTION)
+                .build();
 
         // Records the time of this run; formatted
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd_HH-mm-ss_SSS", Locale.US);
         timestamp = sdf.format(System.currentTimeMillis());
-
     }
 
     /**

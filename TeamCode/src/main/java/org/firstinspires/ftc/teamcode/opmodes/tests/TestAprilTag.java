@@ -26,11 +26,12 @@ public class TestAprilTag extends LinearOpMode {
         while (opModeInInit()) {
             telemetry.addData("Camera State", vision.getCameraState());
             telemetry.update();
+            sleep(50);
         }
 
         while (opModeIsActive()) {
 
-            if (gamepad1.a) {
+            if (gamepad1.aWasPressed()) {
                 telemetryAprilTag();
             }
             sleep(50);
@@ -49,12 +50,17 @@ public class TestAprilTag extends LinearOpMode {
 
         // Step through the list of detections and display info for each one.
         for (AprilTagDetection aprilTag : currentDetections) {
-            AprilTagSingleDetection single = (AprilTagSingleDetection) aprilTag;
-            if (single.metadata != null) {
-                telemetry.addData("ID", single.id);
-                telemetry.addData("Range", single.ftcPose.range);
-                telemetry.addData("Bearing", single.ftcPose.bearing);
-                telemetry.addData("Yaw", single.ftcPose.yaw);
+            if (aprilTag instanceof AprilTagSingleDetection) {
+                AprilTagSingleDetection single = (AprilTagSingleDetection) aprilTag;
+                if (single.metadata != null) {
+                    telemetry.addData("ID", single.id);
+                    telemetry.addData("Range", single.ftcPose.range);
+                    telemetry.addData("Bearing", single.ftcPose.bearing);
+                    telemetry.addData("Yaw", single.ftcPose.yaw);
+                    telemetry.addLine("");
+                } else {
+                    telemetry.addLine("metadata was empty");
+                }
             }
         }
 
