@@ -4,16 +4,14 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-
-/*
- * This is an example of a Linear Op Mode where we just run a test to run code on the robot
+/**
+ * This test displays the values of the controller when plugged in.
  */
-
 @TeleOp(name = "TestGamepadInput", group = "Tests")
 public class TestGamepadInput extends LinearOpMode {
 
     // Declare OpMode members.
-    private ElapsedTime runtime = new ElapsedTime();
+    private final ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() {
