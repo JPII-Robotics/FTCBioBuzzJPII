@@ -22,11 +22,11 @@ Run the file `TestPracticeProblem.java` to view if your method works properly.
  */
 public class PracticeProblem {
     public static int strStr(String haystack, String needle) {
-        //Implement Here
-        for (int i = 0; i < haystack.length(); i++) {
-            System.out.println("HI");
-        }
 
-        return -1;
+        if (haystack.contains(needle)) {
+            return haystack.indexOf(needle);
+        } else {
+            return -1;
+        }
     }
 }
