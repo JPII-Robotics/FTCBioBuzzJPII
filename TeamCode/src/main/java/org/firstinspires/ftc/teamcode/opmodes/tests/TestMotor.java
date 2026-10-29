@@ -1,18 +1,17 @@
 package org.firstinspires.ftc.teamcode.opmodes.tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Robot;
-import org.firstinspires.ftc.teamcode.subsystems.Vision;
-import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
-
-import java.util.List;
 
 /**
- * This op mode tests capturing images and checking aprilTags in the image
+ * Reference test op mode for creating new motor test files.
+ * Disabled so it does not appear on the Driver Station.
  */
+@Disabled
 @TeleOp(name = "TestMotor", group = "Tests")
 public class TestMotor extends LinearOpMode {
     @Override
@@ -26,8 +25,4 @@ public class TestMotor extends LinearOpMode {
             motor.setPower(1.0);
         }
     }
-
-    /**
-     * Gets latest april tag detections and prints out info to telemetry.
-     */
 }
