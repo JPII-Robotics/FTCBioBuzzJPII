@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -14,6 +15,7 @@ import org.firstinspires.ftc.teamcode.subsystems.Vision;
 public class Robot {
 
     public final Vision vision;
+    public final DcMotor testMotor;
 
     /**
      * Finds the hardware and gives specific hardware to subsystems that need it.
@@ -23,6 +25,7 @@ public class Robot {
     public Robot(HardwareMap hardwareMap) {
         // ----- Hardware Lookup -----
         WebcamName webcamName = (WebcamName) hardwareMap.get(Constants.WEBCAM_NAME);
+        testMotor = hardwareMap.get(DcMotor.class, Constants.MOTOR_NAME);
 
         // ----- Building Subsystems -----
         vision = new Vision(webcamName);

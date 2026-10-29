@@ -13,6 +13,7 @@ public class TestGamepadInput extends LinearOpMode {
     // Declare OpMode members.
     private final ElapsedTime runtime = new ElapsedTime();
 
+
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -36,6 +37,7 @@ public class TestGamepadInput extends LinearOpMode {
                     gamepad1.dpad_up, gamepad1.dpad_down, gamepad1.dpad_left, gamepad1.dpad_right);
 
             // Bumpers (bool)
+
             telemetry.addData("Bumpers L/R", "%b / %b",
                     gamepad1.left_bumper, gamepad1.right_bumper);
 
