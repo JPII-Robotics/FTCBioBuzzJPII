@@ -16,13 +16,14 @@ import org.firstinspires.ftc.teamcode.Robot;
 public class TestMotor extends LinearOpMode {
     @Override
     public void runOpMode() {
-        Robot robot = new Robot(hardwareMap);
+        Robot robot = new Robot(hardwareMap, gamepad1);
 
-        DcMotor motor = robot.testMotor;
+        //DcMotor motor = robot.testMotor;
         waitForStart();
 
         while (opModeIsActive()) {
-            motor.setPower(1.0);
+            //motor.setPower(1.0);
+            int one = 1;
         }
     }
 }
