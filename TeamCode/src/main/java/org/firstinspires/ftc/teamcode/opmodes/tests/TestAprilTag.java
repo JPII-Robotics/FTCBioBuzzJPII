@@ -19,7 +19,7 @@ public class TestAprilTag extends LinearOpMode {
     @Override
     public void runOpMode() {
         // Gets the vision object from Robot.java
-        Robot robot = new Robot(hardwareMap);
+        Robot robot = new Robot(hardwareMap, gamepad1);
         vision = robot.vision;
 
         // When in the init phase, print out the state of the camera
