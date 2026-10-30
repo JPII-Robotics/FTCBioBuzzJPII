@@ -4,9 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.subsystems.TankDriving;
-import org.firstinspires.ftc.teamcode.subsystems.Vision;
 
 /**
  * To be run in every opmode/driving file.
@@ -16,7 +14,6 @@ import org.firstinspires.ftc.teamcode.subsystems.Vision;
  */
 public class Robot {
 
-    public final Vision vision;
     public final TankDriving tankDriving;
 
     /**
@@ -26,17 +23,13 @@ public class Robot {
      */
     public Robot(HardwareMap hardwareMap, Gamepad gamepad) {
         // ----- Hardware Lookup -----
-        WebcamName webcamName = (WebcamName) hardwareMap.get(Constants.WEBCAM_NAME);
-
         DcMotor[] dcMotors = new DcMotor[4];
-        dcMotors[0] = (DcMotor) hardwareMap.get(Constants.WheelBR);
-        dcMotors[1] = (DcMotor) hardwareMap.get(Constants.WheelBL);
-        dcMotors[2] = (DcMotor) hardwareMap.get(Constants.WheelFR);
-        dcMotors[3] = (DcMotor) hardwareMap.get(Constants.WheelFL);
+        dcMotors[0] = hardwareMap.get(DcMotor.class, Constants.WheelBR);
+        dcMotors[1] = hardwareMap.get(DcMotor.class, Constants.WheelBL);
+        dcMotors[2] = hardwareMap.get(DcMotor.class, Constants.WheelFR);
+        dcMotors[3] = hardwareMap.get(DcMotor.class, Constants.WheelFL);
 
         // ----- Building Subsystems -----
-        vision = new Vision(webcamName);
         tankDriving = new TankDriving(gamepad, dcMotors);
-
     }
 }

@@ -17,17 +17,20 @@ public class TankDriving {
         this.Bl = dcMotors[1];
         this.Fr = dcMotors[2];
         this.Fl = dcMotors[3];
-
-        Br.setDirection(DcMotorSimple.Direction.REVERSE);
-        Fr.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void updateLoop() {
-        rightPower(-gamepad.right_stick_y);
-        leftPower(-gamepad.left_stick_y);
+        float y = -gamepad.left_stick_y;
+        float x = gamepad.right_stick_x;
+
+        float denominator = (float) Math.max(Math.abs(y) + Math.abs(x), 1.0);
+
+        leftPower((y + x) / denominator);
+        rightPower((y - x) / denominator);
     }
 
     private void rightPower(float power) {
+        power *= -1;
         Br.setPower(power);
         Fr.setPower(power);
     }
