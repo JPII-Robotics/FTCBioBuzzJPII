@@ -20,33 +20,38 @@ import org.firstinspires.ftc.teamcode.subsystems.Vision;
 public class Robot {
 
     public final TankDriving tankDriving;
-
-    public final Vision vision;
     public final Odometry odometry;
+
+    // ----- Optional ----- (declared private)
+    private Vision vision = null;
 
     /**
      * Finds the hardware and gives specific hardware to subsystems that need it.
      */
     public Robot(HardwareMap hardwareMap, Gamepad gamepad) {
-        // ----- Hardware Lookup ----- (tryGet returns null when not in configuration)
+        // ----- Hardware Lookup -----
         DcMotors dcMotors = new DcMotors();
         dcMotors.backRight = hardwareMap.get(DcMotor.class, Constants.WheelBR);
         dcMotors.backLeft = hardwareMap.get(DcMotor.class, Constants.WheelBL);
         dcMotors.frontRight = hardwareMap.get(DcMotor.class, Constants.WheelFR);
         dcMotors.frontRight = hardwareMap.get(DcMotor.class, Constants.WheelFL);
 
-        IMU imu = hardwareMap.get(IMU.class, "imu");
+        IMU imu = hardwareMap.get(IMU.class, Constants.IMU);
 
+        // ----- Optional ----- (Uses tryGet which returns null when not configured);
         WebcamName webcamName = hardwareMap.tryGet(WebcamName.class, Constants.WEBCAM_NAME);
 
         // ----- Building Subsystems -----
         tankDriving = new TankDriving(gamepad, dcMotors);
+        odometry = new Odometry(dcMotors, imu);
+
+        // ----- Optional -----
         if (webcamName != null) {
             vision = new Vision(webcamName);
-        } else {
-            vision = null;
         }
-        odometry = new Odometry(dcMotors, imu);
     }
 
+    public Vision getVision() {
+        return vision;
+    }
 }

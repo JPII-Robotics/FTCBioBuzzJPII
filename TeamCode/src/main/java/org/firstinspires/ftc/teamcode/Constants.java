@@ -8,9 +8,8 @@ public class Constants {
     public static final String WheelBL = "WheelBL"; //ControlHub Motor 1
     public static final String WheelFR = "WheelFR"; //ControlHub Motor 2
     public static final String WheelFL = "WheelFL"; //ControlHub Motor 3
-
-    // Optional: if no webcam with this name is configured/plugged in, Vision is skipped.
     public static final String WEBCAM_NAME = "Webcam 1";
+    public static final String IMU = "imu";
 
     // ----- Misc -----
     public static final Size CAMERA_RESOLUTION = new Size(640, 480);

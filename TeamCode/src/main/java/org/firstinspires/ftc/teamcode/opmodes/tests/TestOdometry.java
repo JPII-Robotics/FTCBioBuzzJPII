@@ -25,7 +25,7 @@ public class TestOdometry extends LinearOpMode {
 
         while (opModeIsActive()) {
             odometry.update();
-            tankDriving.updateLoop();
+            tankDriving.update();
 
             odometryTelemetry(odometry);
         }

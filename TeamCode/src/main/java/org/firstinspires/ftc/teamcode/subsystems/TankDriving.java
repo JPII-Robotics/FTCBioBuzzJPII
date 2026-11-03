@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+/**
+ * Basic tank driving. Only includes controls for forwards, backwards, and turning
+ */
 public class TankDriving {
     Gamepad gamepad;
     DcMotor Br;
@@ -16,7 +18,7 @@ public class TankDriving {
         this.Br = dcMotors.backRight;
         this.Bl = dcMotors.backLeft;
         this.Fr = dcMotors.frontRight;
-        this.Fl = dcMotors.frontRight;
+        this.Fl = dcMotors.frontLeft;
     }
 
     public void update() {
@@ -30,7 +32,7 @@ public class TankDriving {
     }
 
     private void rightPower(float power) {
-        power *= -1;
+        power *= -1; //reversed because motors face opposite direction
         Br.setPower(power);
         Fr.setPower(power);
     }
