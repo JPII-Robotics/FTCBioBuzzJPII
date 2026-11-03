@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * This test displays the values of the controller when plugged in.
+ * "gamepad1" is defined by the controller that is initialized by pressing start + `A` in the driver station.
  */
 @Disabled
 @TeleOp(name = "TestGamepadInput", group = "Tests")

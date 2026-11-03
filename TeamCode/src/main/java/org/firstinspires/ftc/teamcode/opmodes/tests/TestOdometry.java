@@ -12,7 +12,6 @@ import org.firstinspires.ftc.teamcode.subsystems.TankDriving;
  * Reference test op mode for creating new motor test files.
  * Disabled so it does not appear on the Driver Station.
  */
-@Disabled
 @TeleOp(name = "TestMotor", group = "Tests")
 public class TestOdometry extends LinearOpMode {
     @Override
@@ -26,14 +25,14 @@ public class TestOdometry extends LinearOpMode {
         while (opModeIsActive()) {
             odometry.update();
             tankDriving.update();
-
             odometryTelemetry(odometry);
         }
     }
 
     private void odometryTelemetry(Odometry odometry) {
-        double x = odometry.getX();
-        double y = odometry.getY();
-        double heading = odometry.getHeading();
+        telemetry.addData("X", odometry.getX());
+        telemetry.addData("Y", odometry.getY());
+        telemetry.addData("Heading", odometry.getHeading());
+        telemetry.update();
     }
 }
