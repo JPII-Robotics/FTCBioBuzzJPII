@@ -20,7 +20,7 @@ public class Robot {
 
     /**
      * Optional subsystem. Null when no webcam is configured or plugged in,
-     * so the robot can still run without a camera. Check {@link #hasVision()} first.
+     * so the robot can still run without a camera. Check {@link #hasVision()} first. hi
      */
     public final Vision vision;
 
