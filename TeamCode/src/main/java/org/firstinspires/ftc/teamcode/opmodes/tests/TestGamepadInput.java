@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmodes.tests;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -7,6 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 /**
  * This test displays the values of the controller when plugged in.
  */
+@Disabled
 @TeleOp(name = "TestGamepadInput", group = "Tests")
 public class TestGamepadInput extends LinearOpMode {
 

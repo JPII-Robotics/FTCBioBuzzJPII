@@ -11,15 +11,15 @@ public class TankDriving {
     DcMotor Fr;
     DcMotor Fl;
 
-    public TankDriving(Gamepad gamepad, DcMotor[] dcMotors) {
+    public TankDriving(Gamepad gamepad, DcMotors dcMotors) {
         this.gamepad = gamepad;
-        this.Br = dcMotors[0];
-        this.Bl = dcMotors[1];
-        this.Fr = dcMotors[2];
-        this.Fl = dcMotors[3];
+        this.Br = dcMotors.backRight;
+        this.Bl = dcMotors.backLeft;
+        this.Fr = dcMotors.frontRight;
+        this.Fl = dcMotors.frontRight;
     }
 
-    public void updateLoop() {
+    public void update() {
         float y = -gamepad.left_stick_y;
         float x = gamepad.right_stick_x;
 

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmodes.tests;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * This op mode tests capturing images and checking aprilTags in the image
  */
+@Disabled
 @TeleOp(name = "TestAprilTag", group = "Tests")
 public class TestAprilTag extends LinearOpMode {
     private Vision vision;

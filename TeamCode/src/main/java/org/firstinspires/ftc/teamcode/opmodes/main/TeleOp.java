@@ -28,7 +28,6 @@ public class TeleOp extends OpMode {
     public void init() {
         robot = new Robot(hardwareMap, gamepad1);
         this.tankDriving = robot.tankDriving;
-        telemetry.addData("Vision", robot.hasVision() ? "Webcam found" : "No webcam, disabled");
     }
 
     /*
@@ -52,7 +51,7 @@ public class TeleOp extends OpMode {
     @Override
     public void loop() {
         if (tankDriving != null) {
-            tankDriving.updateLoop();
+            tankDriving.update();
         }
     }
 
@@ -61,8 +60,7 @@ public class TeleOp extends OpMode {
      */
     @Override
     public void stop() {
-        // Release the camera if one was opened
-        if (robot != null && robot.hasVision()) {
+        if (robot.vision != null) {
             robot.vision.close();
         }
     }
