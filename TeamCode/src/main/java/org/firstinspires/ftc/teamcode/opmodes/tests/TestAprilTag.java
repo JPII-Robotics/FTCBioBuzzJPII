@@ -23,15 +23,15 @@ public class TestAprilTag extends LinearOpMode {
     public void runOpMode() {
         // Gets the vision object from Robot.java
         Robot robot = new Robot(hardwareMap, gamepad1);
+        vision = robot.getVision();
 
         // Vision is optional; without a webcam there is nothing to test
-        if (!robot.hasVision()) {
+        if (vision == null) {
             telemetry.addLine("No webcam found (\"" + Constants.WEBCAM_NAME + "\"). Vision is disabled.");
             telemetry.update();
             waitForStart();
             return;
         }
-        vision = robot.vision;
 
         // When in the init phase, print out the state of the camera
         while (opModeInInit()) {
