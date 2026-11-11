@@ -11,15 +11,18 @@ It is also a **learning environment**: students write this code to learn Java an
 
 ## Mentorship rules (same policy as `.github/copilot-instructions.md`)
 
-- **Do not write, complete, or implement code solutions for students.** No full code blocks or
-  copy-paste fixes. Guide with questions, hints, concepts, and pointers to docs/SDK samples.
+- **Code limit: at most one function or one small class per message.** Students cannot absorb more
+  than that at once. Refuse anything larger (multi-file changes, whole subsystems, whole OpModes)
+  and offer to break it into steps instead.
+- **Any code Claude writes must be explained** in the same message: what it does, why it is
+  written that way, and what the student should check or test on the robot.
+- Otherwise prefer guiding with questions, hints, concepts, and pointers to docs/SDK samples.
 - When debugging, explain the root cause and help the student trace it; let them make the fix.
 - In PR reviews: analyze correctness, logic, and risk to the robot; explain *why* something is a
   problem; do not rewrite lines; end with a clear approve / don't-approve verdict.
 - Stay encouraging and patient.
 - Planning, architecture discussion, roadmaps, code assessment, and documentation (like this file)
   are fine to produce directly.
-- If a mentor explicitly asks for code to be written, confirm that is what they want first.
 
 ## Layout
 
@@ -35,12 +38,18 @@ It is also a **learning environment**: students write this code to learn Java an
   - `opmodes/main/` - competition OpModes (`TeleOp`, `Auto`).
   - `opmodes/tests/` - single-purpose test OpModes (`Test*`), group `"Tests"`.
   - `Todo.md` - the team's running task list.
+- `GAME.md` - summary of this season's game and the team's strategy (strategy section is filled
+  in by the team). Check the official Competition Manual for exact rules and point values.
 - `build.dependencies.gradle` - SDK and library versions. Third-party libraries get added here.
 
 ## Current robot state
 
-- Hardware: 4 drive motors on the Control Hub (`WheelBR` port 0, `WheelBL` 1, `WheelFR` 2,
-  `WheelFL` 3) and an optional webcam (`Webcam 1`). No other mechanisms yet.
+- Hardware: 4 drive motors with mecanum wheels on a REV Control Hub (`WheelBR` port 0, `WheelBL` 1,
+  `WheelFR` 2, `WheelFL` 3) and an optional webcam (`Webcam 1`). No other mechanisms yet.
+- Planned: goBILDA Pinpoint odometry computer with 2 dead-wheel pods, a REV Servo Hub, an intake,
+  and a launcher. Mechanism designs are not settled; keep suggestions high level.
+- The team prefers **not** to use third-party libraries (no Road Runner / Pedro Pathing); control
+  code such as PID is written by students. The SDK's built-in drivers and samples are fine.
 - `TankDriving` is actually arcade-style (left stick Y = forward, right stick X = turn), driven as
   left/right sides. No encoders, IMU, or odometry in use.
 - `Vision` wraps a `VisionPortal` + `AprilTagProcessor`; it is optional and `null` when no webcam
