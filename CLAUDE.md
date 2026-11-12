@@ -40,6 +40,8 @@ It is also a **learning environment**: students write this code to learn Java an
   - `Todo.md` - the team's running task list.
 - `GAME.md` - summary of this season's game and the team's strategy (strategy section is filled
   in by the team). Check the official Competition Manual for exact rules and point values.
+- `ROADMAP.md` - the high-level software plan for the season. Kept general on purpose; do not add
+  implementation detail to it unless asked.
 - `build.dependencies.gradle` - SDK and library versions. Third-party libraries get added here.
 
 ## Current robot state
@@ -47,7 +49,8 @@ It is also a **learning environment**: students write this code to learn Java an
 - Hardware: 4 drive motors with mecanum wheels on a REV Control Hub (`WheelBR` port 0, `WheelBL` 1,
   `WheelFR` 2, `WheelFL` 3) and an optional webcam (`Webcam 1`). No other mechanisms yet.
 - Planned: goBILDA Pinpoint odometry computer with 2 dead-wheel pods, a REV Servo Hub, an intake,
-  and a launcher. Mechanism designs are not settled; keep suggestions high level.
+  and a launcher on a turret that turns independently of the drivetrain. Aiming is planned from
+  odometry, not the camera. Mechanism designs are not settled; keep suggestions high level.
 - The team prefers **not** to use third-party libraries (no Road Runner / Pedro Pathing); control
   code such as PID is written by students. The SDK's built-in drivers and samples are fine.
 - `TankDriving` is actually arcade-style (left stick Y = forward, right stick X = turn), driven as
