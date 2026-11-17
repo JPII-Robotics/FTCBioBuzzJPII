@@ -1,13 +1,11 @@
 package org.firstinspires.ftc.teamcode.opmodes.main;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.Robot;
 import org.firstinspires.ftc.teamcode.subsystems.TankDriving;
+import org.firstinspires.ftc.teamcode.subsystems.Vision;
 
 /*
  * This is an iterative Op Mode
@@ -26,8 +24,8 @@ public class TeleOp extends OpMode {
      */
     @Override
     public void init() {
-        robot = new Robot(hardwareMap, gamepad1);
-        this.tankDriving = robot.tankDriving;
+        robot = new Robot(hardwareMap);
+        tankDriving = robot.tankDriving;
     }
 
     /*
@@ -50,9 +48,8 @@ public class TeleOp extends OpMode {
      */
     @Override
     public void loop() {
-        if (tankDriving != null) {
-            tankDriving.update();
-        }
+        // Stick y is negative when pushed forward, so it is flipped.
+        tankDriving.update(gamepad1.right_stick_x, -gamepad1.left_stick_y);
     }
 
     /*
@@ -60,8 +57,9 @@ public class TeleOp extends OpMode {
      */
     @Override
     public void stop() {
-        if (robot.vision != null) {
-            robot.vision.close();
+        Vision vision = robot.getVision();
+        if (vision != null) {
+            vision.close();
         }
     }
 

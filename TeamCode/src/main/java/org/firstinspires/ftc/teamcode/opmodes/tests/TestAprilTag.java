@@ -22,7 +22,7 @@ public class TestAprilTag extends LinearOpMode {
     @Override
     public void runOpMode() {
         // Gets the vision object from Robot.java
-        Robot robot = new Robot(hardwareMap, gamepad1);
+        Robot robot = new Robot(hardwareMap);
         vision = robot.getVision();
 
         // Vision is optional; without a webcam there is nothing to test

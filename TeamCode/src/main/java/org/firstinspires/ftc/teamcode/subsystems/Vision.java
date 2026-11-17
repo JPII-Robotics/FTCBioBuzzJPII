@@ -47,7 +47,7 @@ public class Vision {
      */
     public boolean captureImage() {
         //If camera not ready, return false
-        if (!(visionPortal.getCameraState() == (VisionPortal.CameraState.STREAMING))) {
+        if (visionPortal.getCameraState() != VisionPortal.CameraState.STREAMING) {
             return false;
         }
         captureCounter++;

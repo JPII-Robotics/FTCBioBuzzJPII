@@ -29,8 +29,6 @@ public class TestGamepadInput extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            telemetry.addData("Run Time", runtime.toString());
-
             // Face buttons (bool)
             telemetry.addData("A / B / X / Y", "%b / %b / %b / %b",
                     gamepad1.a, gamepad1.b, gamepad1.x, gamepad1.y);
@@ -40,7 +38,6 @@ public class TestGamepadInput extends LinearOpMode {
                     gamepad1.dpad_up, gamepad1.dpad_down, gamepad1.dpad_left, gamepad1.dpad_right);
 
             // Bumpers (bool)
-
             telemetry.addData("Bumpers L/R", "%b / %b",
                     gamepad1.left_bumper, gamepad1.right_bumper);
 

@@ -1,44 +1,65 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
- * Basic tank driving. Only includes controls for forwards, backwards, and turning
+ * Basic tank driving. Only includes controls for forwards, backwards, and turning.
+ * <p>
+ * This class does not read the gamepad. The op mode passes in the stick values,
+ * which means autonomous code can drive the robot by calling update() with its own numbers.
  */
 public class TankDriving {
-    Gamepad gamepad;
-    DcMotor Br;
-    DcMotor Bl;
-    DcMotor Fr;
-    DcMotor Fl;
+    private final DcMotor backRight;
+    private final DcMotor backLeft;
+    private final DcMotor frontRight;
+    private final DcMotor frontLeft;
 
-    public TankDriving(Gamepad gamepad, DcMotors dcMotors) {
-        this.gamepad = gamepad;
-        this.Br = dcMotors.backRight;
-        this.Bl = dcMotors.backLeft;
-        this.Fr = dcMotors.frontRight;
-        this.Fl = dcMotors.frontLeft;
+    public TankDriving(DcMotors dcMotors) {
+        this.backRight = dcMotors.backRight;
+        this.backLeft = dcMotors.backLeft;
+        this.frontRight = dcMotors.frontRight;
+        this.frontLeft = dcMotors.frontLeft;
+
+        // The right side motors face the opposite direction, so reverse them once here.
+        // Now positive power drives every wheel forward.
+        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
-    public void update() {
-        float y = -gamepad.left_stick_y;
-        float x = gamepad.right_stick_x;
-
-        float denominator = (float) Math.max(Math.abs(y) + Math.abs(x), 1.0);
+    /**
+     * Sets the motor powers. Call this once every loop.
+     * <p>
+     * Example from an op mode: {@code tankDriving.update(gamepad1.right_stick_x, -gamepad1.left_stick_y);}
+     * (The gamepad's stick y is negative when pushed forward, so the op mode flips it.)
+     *
+     * @param x Turning, from -1 to 1. Positive turns right (clockwise).
+     * @param y Forward/backward, from -1 to 1. Positive drives forward.
+     */
+    public void update(double x, double y) {
+        // Scales the powers down so no motor is ever asked for more than 1.0,
+        // which keeps the ratio between the left and right sides the same.
+        double denominator = Math.max(Math.abs(y) + Math.abs(x), 1.0);
 
         leftPower((y + x) / denominator);
         rightPower((y - x) / denominator);
     }
 
-    private void rightPower(float power) {
-        power *= -1; //reversed because motors face opposite direction
-        Br.setPower(power);
-        Fr.setPower(power);
+    /**
+     * Stops all drive motors.
+     */
+    public void stop() {
+        leftPower(0);
+        rightPower(0);
     }
 
-    private void leftPower(float power) {
-        Bl.setPower(power);
-        Fl.setPower(power);
+    private void rightPower(double power) {
+        backRight.setPower(power);
+        frontRight.setPower(power);
+    }
+
+    private void leftPower(double power) {
+        backLeft.setPower(power);
+        frontLeft.setPower(power);
     }
 }
