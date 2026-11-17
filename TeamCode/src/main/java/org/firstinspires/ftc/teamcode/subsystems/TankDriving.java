@@ -15,11 +15,11 @@ public class TankDriving {
     private final DcMotor frontRight;
     private final DcMotor frontLeft;
 
-    public TankDriving(DcMotors dcMotors) {
-        this.backRight = dcMotors.backRight;
-        this.backLeft = dcMotors.backLeft;
-        this.frontRight = dcMotors.frontRight;
-        this.frontLeft = dcMotors.frontLeft;
+    public TankDriving(DriveMotors driveMotors) {
+        this.backRight = driveMotors.backRight;
+        this.backLeft = driveMotors.backLeft;
+        this.frontRight = driveMotors.frontRight;
+        this.frontLeft = driveMotors.frontLeft;
 
         // The right side motors face the opposite direction, so reverse them once here.
         // Now positive power drives every wheel forward.

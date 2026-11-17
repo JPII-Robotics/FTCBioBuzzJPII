@@ -1,7 +1,3 @@
-TODO - Rewrite TestGamepadInput to show gamepad1 and gamepad2.
-(Robot.java no longer handles gamepads; op modes read gamepad1/gamepad2
-directly and pass numbers to the subsystems.)
-
 TODO - Rewrite TestAprilTag troubleshoot why only one april tag is detected each image.
 
 TODO - Finish Odometry.java (see the TODOs in the file):

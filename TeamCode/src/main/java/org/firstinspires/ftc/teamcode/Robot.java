@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.teamcode.subsystems.DcMotors;
+import org.firstinspires.ftc.teamcode.subsystems.DriveMotors;
 import org.firstinspires.ftc.teamcode.subsystems.Odometry;
 import org.firstinspires.ftc.teamcode.subsystems.TankDriving;
 import org.firstinspires.ftc.teamcode.subsystems.Vision;
@@ -33,11 +33,11 @@ public class Robot {
      */
     public Robot(HardwareMap hardwareMap) {
         // ----- Hardware Lookup -----
-        DcMotors dcMotors = new DcMotors();
-        dcMotors.backRight = hardwareMap.get(DcMotor.class, Constants.WheelBR);
-        dcMotors.backLeft = hardwareMap.get(DcMotor.class, Constants.WheelBL);
-        dcMotors.frontRight = hardwareMap.get(DcMotor.class, Constants.WheelFR);
-        dcMotors.frontLeft = hardwareMap.get(DcMotor.class, Constants.WheelFL);
+        DriveMotors driveMotors = new DriveMotors();
+        driveMotors.backRight = hardwareMap.get(DcMotor.class, Constants.WheelBR);
+        driveMotors.backLeft = hardwareMap.get(DcMotor.class, Constants.WheelBL);
+        driveMotors.frontRight = hardwareMap.get(DcMotor.class, Constants.WheelFR);
+        driveMotors.frontLeft = hardwareMap.get(DcMotor.class, Constants.WheelFL);
 
         // The two dead wheels plug into the Pinpoint, not the Control Hub.
         GoBildaPinpointDriver pinpoint = hardwareMap.get(GoBildaPinpointDriver.class, Constants.PINPOINT);
@@ -46,7 +46,7 @@ public class Robot {
         WebcamName webcamName = hardwareMap.tryGet(WebcamName.class, Constants.WEBCAM_NAME);
 
         // ----- Building Subsystems -----
-        tankDriving = new TankDriving(dcMotors);
+        tankDriving = new TankDriving(driveMotors);
         odometry = new Odometry(pinpoint);
 
         // ----- Optional -----
