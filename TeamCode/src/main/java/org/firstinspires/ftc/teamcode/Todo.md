@@ -3,6 +3,5 @@ TODO - Rewrite TestAprilTag troubleshoot why only one april tag is detected each
 TODO - Finish Odometry.java (see the TODOs in the file):
 1. Measure the pod offsets and fill in setOffsets() in configure().
 2. Set the encoder resolution for our dead wheels in configure().
-3. Fill in reset(), setPose() and update().
-4. Run TestOdometry and set encoder directions so X goes up forward and Y goes up left.
-5. Check the TestOdometry checklist (24 in forward, 24 in left, 90 deg turn in place).
+3. Run TestOdometry and set encoder directions so X goes up forward and Y goes up left.
+4. Check the TestOdometry checklist (24 in forward, 24 in left, 90 deg turn in place).

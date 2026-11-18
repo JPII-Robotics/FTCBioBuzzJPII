@@ -23,7 +23,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
  * </ul>
  * Units: x and y are in inches, heading is in degrees.
  * <p>
- * NOT FINISHED. The methods marked TODO are empty, so x, y and heading stay at 0 until they are written.
+ * NOT FINISHED. configure() still needs our pod offsets, encoder resolution and encoder
+ * directions. Until it is filled in, the Pinpoint uses whatever settings it already has,
+ * so distances and turning will not be accurate.
  */
 public class Odometry {
     private final GoBildaPinpointDriver pinpoint;
@@ -60,7 +62,10 @@ public class Odometry {
      * Call it during init, never while driving.
      */
     public void reset() {
-        // TODO pinpoint.resetPosAndIMU(); and set x, y, heading back to 0.
+        pinpoint.resetPosAndIMU();
+        x = 0;
+        y = 0;
+        heading = 0;
     }
 
     /**
@@ -72,7 +77,11 @@ public class Odometry {
      * @param heading Degrees, counter-clockwise positive.
      */
     public void setPose(double x, double y, double heading) {
-        // TODO pinpoint.setPosition(new Pose2D(DistanceUnit.INCH, x, y, AngleUnit.DEGREES, heading));
+        pinpoint.setPosition(new Pose2D(DistanceUnit.INCH, x, y, AngleUnit.DEGREES, heading));
+        // Also save it here so getX/getY/getHeading are right before the next update().
+        this.x = x;
+        this.y = y;
+        this.heading = heading;
     }
 
     /**
@@ -80,7 +89,14 @@ public class Odometry {
      * before using getX(), getY(), getHeading() or any of the diagnostic getters.
      */
     public void update() {
-        // TODO pinpoint.update(); then copy getPosX/getPosY (INCH) and getHeading (DEGREES) into x, y, heading.
+        // Reads position, encoders and status from the Pinpoint in one I2C read.
+        pinpoint.update();
+
+        // The Pinpoint already did the odometry math; we just copy its answer.
+        Pose2D position = pinpoint.getPosition();
+        x = position.getX(DistanceUnit.INCH);
+        y = position.getY(DistanceUnit.INCH);
+        heading = position.getHeading(AngleUnit.DEGREES);
     }
 
     // ----- Position -----
